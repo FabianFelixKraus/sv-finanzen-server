@@ -12,6 +12,13 @@ mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser:true})
 app.use(express.json())
 
 const transactionsRouter = require("./routes/transactions")
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://127.0.0.1:5173"); // update with your client's origin
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 app.use("/transactions", transactionsRouter)
 
 const port = 3000
