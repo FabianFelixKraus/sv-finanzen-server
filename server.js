@@ -14,6 +14,5 @@ app.use(express.json())
 const transactionsRouter = require("./routes/transactions")
 app.use("/transactions", transactionsRouter)
 
-
 const port = 3000
 app.listen(port, () => console.log(`Server started and listening on port: ${port}`))
